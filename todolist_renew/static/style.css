@@ -1,0 +1,191 @@
+:root {
+  --bg: #f3f0e9;
+  --bg-soft: #fffef8;
+  --ink: #1e1a17;
+  --ink-soft: #5e5145;
+  --line: #d8cdbd;
+  --accent: #0f9b8e;
+  --accent-strong: #0b756b;
+  --danger: #b9372f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #fffbe8 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, #d7f6f2 0%, transparent 35%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.app-nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.app-nav .router-link-active {
+  color: white;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 16px rgba(20, 20, 20, 0.06);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+input,
+button,
+select {
+  font: inherit;
+}
+
+input[type='text'] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  background: white;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent-strong);
+}
+
+.todo-list {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: white;
+}
+
+.todo-item.done .title {
+  text-decoration: line-through;
+  color: #8a8074;
+}
+
+.todo-item .meta {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.todo-item .delete {
+  background: var(--danger);
+}
+
+.todo-item .delete:hover {
+  background: #8d2a24;
+}
+
+.empty {
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 0.75rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 0.75rem;
+}
+
+.stat {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.stat h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.stat p {
+  margin: 0.35rem 0 0;
+  font-size: 1.4rem;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+@media (max-width: 700px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
