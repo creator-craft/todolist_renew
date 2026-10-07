@@ -13,16 +13,16 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 	onRemove,
 }) => {
 	return (
-		<li className="todo-item">
+		<li className={`todo-item ${todo.completed ? "done" : ""}`}>
 			<input
 				type="checkbox"
 				checked={todo.completed}
 				onChange={() => onToggle(todo)}
 			/>
-            <div>
-                <p className="title">{todo.title}</p>
-                <p className="meta">{todo.created_at}</p>
-            </div>
+			<div>
+				<p className="title">{todo.title}</p>
+				<p className="meta">{todo.created_at}</p>
+			</div>
 			<button type="button" className="delete" onClick={() => onRemove(todo)}>
 				Delete
 			</button>

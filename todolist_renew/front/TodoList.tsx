@@ -90,9 +90,9 @@ export default () => {
 
 			{visibleTodos.length === 0 ? (
 				<p className="empty">
-					{filter == "all"
+					{filter === "all"
 						? "No tasks yet"
-						: filter == "done"
+						: filter === "done"
 							? "No complete tasks yet"
 							: "No pending tasks yet"}
 				</p>
