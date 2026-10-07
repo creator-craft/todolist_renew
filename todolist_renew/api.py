@@ -19,8 +19,8 @@ def todolist(req: HttpRequest):
         data = TodoInputData.model_validate_json(req.body)
         if not data.title or not data.title.strip():
             return JsonResponse({"error": "Invalid title"}, status=400)
-        TodoList.objects.create(title=data.title)
-        return JsonResponse({}, status=201)
+        todo = TodoList.objects.create(title=data.title)
+        return JsonResponse(todo.to_dict(), status=201)
     except ValidationError:
         return JsonResponse({"error": "Invalid body"}, status=400)
 
@@ -46,8 +46,8 @@ def todo(req: HttpRequest, todo_id: int):
         if data.completed is not None:
             todo.completed = data.completed
         todo.save()
+        return JsonResponse(todo.to_dict(), status=200)
 
     if req.method == "DELETE":
         todo.delete()
-
-    return JsonResponse({}, status=204)
+        return JsonResponse({}, status=204)
